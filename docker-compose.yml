@@ -1,0 +1,10 @@
+version: '3'
+services:
+  backend:
+    build: backend
+    ports:
+    - 4000:80
+  client:
+    build: client
+    ports:
+    - 9090:80
