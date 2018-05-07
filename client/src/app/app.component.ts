@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = environment.backend_url;
+
+  constructor(protected http: HttpClient) {
+    this.http.get<string>(environment.backend_url).subscribe((title: string) => {
+      this.title = title;
+     });
+  }
 }
