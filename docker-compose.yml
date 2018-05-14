@@ -3,8 +3,18 @@ services:
   backend:
     build: backend
     ports:
-    - 4000:80
+      - 4000:80
+    links:
+      - redis
+    depends_on:
+      - redis
   client:
     build: client
     ports:
-    - 9090:80
+      - 9090:80
+  redis:
+    image: redis  
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_HOST=redis

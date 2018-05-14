@@ -11,7 +11,7 @@ export class AppComponent {
   title = environment.backend_url;
 
   constructor(protected http: HttpClient) {
-    this.http.get<string>(environment.backend_url).subscribe((title: string) => {
+    this.http.get<string>(environment.backend_url + '/data').subscribe((title: string) => {
       this.title = title;
      });
   }
